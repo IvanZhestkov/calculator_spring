@@ -39,6 +39,7 @@ public class IndexController {
                           @RequestParam("operation") String operation,
                           Model model) {
         validator.validate(calc, result);
+        validator.validateByZero(service, calc, result);
         if (result.hasErrors()) {
             calc.setDigit("");
             calc.setOperation("");
