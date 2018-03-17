@@ -2,17 +2,17 @@ package ru.kpfu.itis.model;
 
 public class Calculator {
 
-    private Double digit;
+    private String digit;
 
     private String operation;
 
     private String error;
 
-    public Double getDigit() {
+    public String getDigit() {
         return digit;
     }
 
-    public void setDigit(Double digit) {
+    public void setDigit(String digit) {
         this.digit = digit;
     }
 

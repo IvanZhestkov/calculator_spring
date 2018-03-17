@@ -40,17 +40,19 @@ public class IndexController {
                           Model model) {
         validator.validate(calc, result);
         if (result.hasErrors()) {
+            calc.setDigit("");
+            calc.setOperation("");
             return "calc";
         }
         if (service.getDigit() == null) {
-            service.addDigit(calc.getDigit());
+            service.addDigit(Double.valueOf(calc.getDigit()));
             service.addMathAction(operation);
-            calc.setDigit(service.getDigit());
+            calc.setDigit(service.getDigit().toString());
             calc.setOperation(service.getMathAction());
             return "calc";
         }
         // отображение последнего мат.действия
-        model.addAttribute("calc", service.calculate(calc.getDigit(), operation));
+        model.addAttribute("calc", service.calculate(Double.valueOf(calc.getDigit()), operation));
         return "calc";
     }
 }

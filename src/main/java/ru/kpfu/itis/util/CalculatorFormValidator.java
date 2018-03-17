@@ -22,9 +22,14 @@ public class CalculatorFormValidator implements Validator {
         if (calc.getDigit() == null) {
             errors.rejectValue("error", "", "Некорректные введенные данные");
         }
-        Matcher a = p.matcher(calc.getDigit().toString());
-        if (!a.matches()) {
+        try {
+            Double digit = Double.valueOf(calc.getDigit());
+        } catch (NumberFormatException e) {
             errors.rejectValue("error", "", "Допустимы только цифры!");
         }
+        /*Matcher a = p.matcher(digit.toString());
+        if (a.matches()) {
+            errors.rejectValue("error", "", "Допустимы только цифры!");
+        }*/
     }
 }

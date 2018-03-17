@@ -49,7 +49,7 @@ public class CalculatorServiceImpl implements CalculatorService {
         } catch (ArithmeticException ae) {
             ae.printStackTrace();
         }
-        calc.setDigit(result);
+        calc.setDigit(String.valueOf(result));
         addDigit(result);
         history.addResult(result);
         if (operation.equals("=")) {
